@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/handong991201/picture/img/美丽的天空.jpg">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/handong991201/picture/img/美丽的天空.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="handong">
+  <meta name="keywords" content="">
+  
+  <title>多项式 - 寒冬</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/gundongtiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"handong991201.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>handong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/handong991201/picture/img/1602750730545.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="多项式">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-04 20:43" pubdate>
+        2021年10月4日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      638 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">多项式</h1>
+            
+            <div class="markdown-body">
+              <h2 id="前言">前言</h2>
+<p>在阅读《高等代数考研——高频真题分类精解300例》，记录多项式的相关练习。</p>
+<h2 id="带余除法">带余除法</h2>
+<ol type="1">
+<li>设多项式<span class="math inline">\(f(x)\)</span>除以<span class="math inline">\(x^2-1,x^2+3\)</span>的余式分别为<span class="math inline">\(2x+7,2x-1\)</span>求多项式<span class="math inline">\(f(x)\)</span>除以<span class="math inline">\((x^2-1)(x^2+3)\)</span>的余式.
+<ul>
+<li><span class="math inline">\(\frac{1}{2}x^3+2x^2+\frac{7}{2}x+5\)</span>.</li>
+</ul></li>
+<li>求次数最低的首项系数为<span class="math inline">\(1\)</span>的实多项式<span class="math inline">\(f(x)\)</span>使得<span class="math inline">\(f(0)=7,f(1)=14,f(2)=35,f(3)=76\)</span>.
+<ul>
+<li><span class="math inline">\(f(x)=x^3+4x^2+2x+7\)</span>.</li>
+<li>拉格朗日插值</li>
+</ul></li>
+<li>求次数最低的首项系数为<span class="math inline">\(1\)</span>的实多项式<span class="math inline">\(f(x)\)</span>使得<span class="math inline">\(x^2+1|f(x)\)</span>,且<span class="math inline">\(x^3+x^2+1|f(x)+1\)</span>.
+<ul>
+<li><span class="math inline">\(f(x)=x^3+x\)</span>.</li>
+<li>中国剩余定理</li>
+</ul></li>
+</ol>
+<h2 id="整除">整除</h2>
+<ol type="1">
+<li><p>设<span class="math inline">\(f(x),g(x),h(x)\)</span>是实系数多项式,且 <span class="math display">\[
+(x^2+1)h(x)+(x-1)f(x)+(x-2)g(x)=0,\\
+(x^2+1)h(x)+(x+1)f(x)+(x+2)g(x)=0
+\]</span> 证明:<span class="math inline">\(f(x),g(x)\)</span>能被<span class="math inline">\(x^2+1\)</span>整除(<span class="math inline">\(x^2+1\)</span>为<span class="math inline">\(f(x),g(x)\)</span>的公因式).</p>
+<ul>
+<li>解出<span class="math inline">\(f(x),g(x)\)</span>.</li>
+<li><span class="math inline">\(x\)</span>用<span class="math inline">\(i,-i\)</span>代入,证明<span class="math inline">\(f(i)=f(-i)=0\)</span>.</li>
+</ul></li>
+<li><p>设<span class="math inline">\((x^2+x+1)|(f(x^3)+xg(x^3))\)</span>,且<span class="math inline">\(n\)</span>阶方阵<span class="math inline">\(A\)</span>有一个特征值为<span class="math inline">\(1\)</span>,证明:<span class="math inline">\(f(A),g(A)\)</span>都不是可逆阵.</p>
+<ul>
+<li>先证明<span class="math inline">\(1\)</span>是<span class="math inline">\(f(x),g(x)\)</span>的根,用到<span class="math inline">\(3\)</span>次单位根,然后根据<span class="math inline">\(f(1)\)</span>为<span class="math inline">\(f(A)\)</span>的特征值得到<span class="math inline">\(f(A)\)</span>为不可逆.</li>
+</ul></li>
+<li><p>设多项式 <span class="math display">\[
+f(x)=x^{3m}-x^{3n+1}+x^{3p+2},g(x)=x^2-x+1,
+\]</span> 其中为<span class="math inline">\(m,n,p\)</span>非负整数.证明:<span class="math inline">\(g(x)|f(x)\)</span>的充要条件是<span class="math inline">\(m,n,p\)</span>有相同的奇偶性.</p>
+<ul>
+<li>设<span class="math inline">\(g(x)\)</span>的两个根为<span class="math inline">\(\varepsilon_1,\varepsilon_2\)</span>,<span class="math inline">\(g(x)|f(x)\)</span>等价于<span class="math inline">\(f(\varepsilon_1)=0,f(\varepsilon_2)=0\)</span>.</li>
+</ul></li>
+<li><p>设<span class="math inline">\(m,n,p\)</span>为非负整数,<span class="math inline">\(f(x)=x^{3m}+x^{3n+1}+x^{3p+2}+1\)</span>,证明:<span class="math inline">\((x^2+x+1,f(x))=1\)</span>.</p>
+<ul>
+<li>理解本质:<span class="math inline">\(x^2+x+1\not\mid f(x)\)</span>.</li>
+</ul></li>
+<li><p>设<span class="math inline">\(a_i(1\leqslant i\leqslant n)\)</span>,是<span class="math inline">\(n\)</span>个非负整数,试求多项式<span class="math inline">\(\sum\limits_{i=1}^{n}x^{a_i}\)</span>被<span class="math inline">\(x^2+x+1\)</span>整除的充要条件.</p></li>
+<li><p>(西北大学)设<span class="math inline">\(f_1(x),\cdots,f_n(x)(n\geqslant2)\)</span>为多项式，且满足 <span class="math display">\[
+x^{n-1}+\cdots+x+1|f_1(x^n)+xf_2(x^n)+\cdots+x^{n-1}f_n(x^n).
+\]</span> 证明:存在某一常数<span class="math inline">\(c\)</span>使得<span class="math inline">\((x-1)^n|\prod\limits_{i=1}^n(f_i(x)-c)\)</span>.</p>
+<ul>
+<li><p>证明<span class="math inline">\((f_1(1),f_2(1),\cdots,f_n(1))\)</span>与<span class="math inline">\((1,1,\cdots,1)\)</span>平行，群里的大佬做的。</p>
+<blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/handong991201/picture/img/image-20211009203841444.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/handong991201/picture/img/image-20211009203909354.png" srcset="/img/loading.gif" lazyload /></p>
+</blockquote></li>
+</ul></li>
+<li><p>若<span class="math inline">\((x-1)|g(x^n)\)</span>，求证:<span class="math inline">\((x^n-1)|g(x^n)\)</span>.</p></li>
+<li><p>若<span class="math inline">\((x-a)|g(x^n)\)</span>，求证:<span class="math inline">\((x^n-a^n)|g(x^n)\)</span>.</p></li>
+<li><p>设<span class="math inline">\(m\)</span>为任意正整数，证明:<span class="math inline">\(f^m(x)|g^m(x)\)</span>的充要条件为<span class="math inline">\(f(x)|g(x)\)</span>.</p></li>
+<li></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/">高等代数</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/12/Lagrange%E6%81%92%E7%AD%89%E5%BC%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Lagrange恒等式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/02/%E5%92%8C%E5%BC%8Fand%E7%A7%AF%E5%88%86%E7%9A%84%E6%9E%81%E9%99%90%E9%97%AE%E9%A2%98/">
+                        <span class="hidden-mobile">和式的极限问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=498040739&auto=0&height=66"></iframe>
+	
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+  <div>
+  <span id="timeDate">载入天数...</span>
+  <span id="times">载入时分秒...</span>
+  <script>
+  var now = new Date();
+  function createtime(){
+      var grt= new Date("06/06/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
+      now.setTime(now.getTime()+250);
+      days = (now - grt ) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+      hnum = Math.floor(hours);
+      if(String(hnum).length ==1 ){
+          hnum = "0" + hnum;
+      }
+      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes);
+      if(String(mnum).length ==1 ){
+                mnum = "0" + mnum;
+      }
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds);
+      if(String(snum).length ==1 ){
+                snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "🚀 for&nbsp"+dnum+"&nbspdays";  //此次自定义显示内容
+      document.getElementById("times").innerHTML = hnum + "&nbsphr&nbsp" + mnum + "&nbspmin&nbsp" + snum + "&nbspsec";
+  }  //此次自定义显示内容
+  setInterval("createtime()",250);
+  </script>
+</div>
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/love.js"></script>
+<script src="/js/xiaoxingxing.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

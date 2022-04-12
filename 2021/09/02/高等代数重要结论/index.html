@@ -1,0 +1,883 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/handong991201/picture/img/美丽的天空.jpg">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/handong991201/picture/img/美丽的天空.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="handong">
+  <meta name="keywords" content="">
+  
+  <title>高等代数重要结论 - 寒冬</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/gundongtiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"handong991201.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>handong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/handong991201/picture/img/1602750730545.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="高等代数重要结论">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-02 18:28" pubdate>
+        2021年9月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      37
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">高等代数重要结论</h1>
+            
+            <div class="markdown-body">
+              <h2 id="行列式">行列式</h2>
+<ol type="1">
+<li><p><strong>若<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>是方阵，则</strong> <span class="math display">\[
+\begin{vmatrix}
+A &amp; O\\
+C &amp; B
+\end{vmatrix}
+=\begin{vmatrix}
+A
+\end{vmatrix}
+\begin{vmatrix}
+B
+\end{vmatrix}
+\]</span></p></li>
+<li><p><strong>设<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>分别是<span class="math inline">\(s\times n\)</span>，<span class="math inline">\(n\times s\)</span>矩阵，则</strong> <span class="math display">\[
+\begin{vmatrix}
+I_n &amp; B\\
+A &amp; I_s
+\end{vmatrix}=
+\begin{vmatrix}
+I_s-AB
+\end{vmatrix}=
+\begin{vmatrix}
+I_n-BA
+\end{vmatrix}
+\]</span></p></li>
+<li><p>设<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>，<span class="math inline">\(C\)</span>，<span class="math inline">\(D\)</span>都是数域<span class="math inline">\(K\)</span>上的<span class="math inline">\(n\)</span>阶矩阵，且<span class="math inline">\(AC=CA\)</span>，则 <span class="math display">\[
+\begin{vmatrix}
+A &amp; B\\
+C &amp; D
+\end{vmatrix}
+=\begin{vmatrix}
+AD-CB
+\end{vmatrix}
+\]</span></p>
+<ul>
+<li>摄动法</li>
+</ul></li>
+<li><p>设<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>是<span class="math inline">\(n\)</span>阶矩阵且<span class="math inline">\(AB=BA\)</span>，则 <span class="math display">\[
+\begin{vmatrix}
+A &amp; -B\\
+B &amp; A
+\end{vmatrix}
+=|A^2+B^2|
+\]</span></p>
+<ul>
+<li>由上一个可得，或者分块初等变换：<span class="math inline">\(i\)</span>.</li>
+</ul></li>
+<li><p>设<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>是<span class="math inline">\(n\)</span>阶矩阵，则 <span class="math display">\[
+\begin{vmatrix}
+A &amp; B\\
+B &amp; A
+\end{vmatrix}
+=|A+B||A-B|
+\]</span></p></li>
+<li><p>设<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>是<span class="math inline">\(n\)</span>阶实矩阵，则 <span class="math display">\[
+\begin{vmatrix}
+A &amp; -B\\
+B &amp; A
+\end{vmatrix}\geqslant0
+\]</span></p></li>
+<li><p><strong>（行列式降阶公式）<span class="math inline">\(A,B\)</span>为可逆矩阵，则有</strong> <span class="math display">\[
+|D||A-BD^{-1}C|=|A||D-CA^{-1}B|.
+\]</span></p>
+<ul>
+<li>求下列行列式的值： <span class="math display">\[
+\begin{vmatrix}
+a_1^2 &amp; a_1a_2+1 &amp; \cdots &amp; a_1a_n+1\\
+a_2a_1+1 &amp; a_2^2 &amp; \cdots &amp; a_2a_n+1\\
+\vdots &amp; \vdots &amp; &amp; \vdots\\
+a_na_1+1 &amp; a_na_2+1 &amp; \cdots &amp; a_na_n+1
+\end{vmatrix}
+\]</span></li>
+</ul></li>
+<li><p>行列式求值：乘以个转置 <span class="math display">\[
+\begin{vmatrix}
+x &amp; y &amp; -z &amp; w\\
+y &amp; -x &amp; -w &amp; -z\\
+z &amp; -w &amp; x &amp; y\\
+w &amp; z &amp; y &amp; -x
+\end{vmatrix}
+\]</span></p></li>
+</ol>
+<h2 id="矩阵">矩阵</h2>
+<ol type="1">
+<li>上（下）三角阵的加减，数乘，乘法（幂），多项式，伴随和求逆都是上（下）三角阵，并且所得上（下）三角阵的主对角元是对应元素的加减，数乘，乘法（幂），多项式，伴随和求逆。</li>
+<li><strong>任意一个复矩阵一定相似与一个上三角阵。</strong></li>
+<li>任意一个复矩阵<span class="math inline">\(A\)</span>，存在<span class="math inline">\(n\)</span>阶复对称矩阵<span class="math inline">\(B,C\)</span>，使得<span class="math inline">\(A=BC\)</span>，并且可以指定<span class="math inline">\(B,C\)</span>，中任何一个为可逆矩阵。</li>
+<li>任意一个复矩阵<span class="math inline">\(A\)</span>都相似于一个复对称阵。</li>
+<li>分块对角矩阵对角线上的块打乱之后是合同的，正交相似的。</li>
+</ol>
+<h3 id="矩阵方程">矩阵方程</h3>
+<ol type="1">
+<li>矩阵方程<span class="math inline">\(AX=B\)</span>有解等价于<span class="math inline">\(B\)</span>的列向量可由<span class="math inline">\(A\)</span>的列向量线性表示，无解等价于<span class="math inline">\(B\)</span>的某个列向量不能由<span class="math inline">\(A\)</span>的列向量线性表示。
+<ul>
+<li>过度矩阵。</li>
+</ul></li>
+</ol>
+<h3 id="相抵标准型">相抵标准型</h3>
+<ol type="1">
+<li>设<span class="math inline">\(A\)</span>是一个<span class="math inline">\(m\times n\)</span>矩阵，则
+<ul>
+<li>若<span class="math inline">\(A\)</span>列满秩，则存在秩为<span class="math inline">\(n\)</span>的<span class="math inline">\(n\times m\)</span>矩阵<span class="math inline">\(B\)</span>，使得<span class="math inline">\(BA=I_n\)</span>.（列满秩存在左逆）</li>
+<li>若<span class="math inline">\(A\)</span>行满秩，则存在秩为<span class="math inline">\(m\)</span>的<span class="math inline">\(n\times m\)</span>矩阵<span class="math inline">\(C\)</span>，使得<span class="math inline">\(AC=I_m\)</span>.（行满秩存在右逆）</li>
+</ul></li>
+<li>设<span class="math inline">\(A\)</span>是一个<span class="math inline">\(m\times n\)</span>矩阵，则
+<ul>
+<li>若<span class="math inline">\(A\)</span>列满秩，且<span class="math inline">\(AD=AE\)</span>，则<span class="math inline">\(D=E\)</span>.</li>
+<li>若<span class="math inline">\(A\)</span>行满秩，且<span class="math inline">\(DA=EA\)</span>，则<span class="math inline">\(D=E\)</span>.</li>
+</ul></li>
+<li>设<span class="math inline">\(A\)</span>是一个<span class="math inline">\(m\times n\)</span>矩阵，秩为<span class="math inline">\(r\)</span>，则<span class="math inline">\(A\)</span>存在满秩分解：<span class="math inline">\(A=BC\)</span>，其中<span class="math inline">\(B\)</span>为<span class="math inline">\(m\times r\)</span>列满秩矩阵，<span class="math inline">\(C\)</span>为<span class="math inline">\(r \times n\)</span>行满秩矩阵.
+<ul>
+<li>若<span class="math inline">\(A\)</span>有两个满秩分解<span class="math inline">\(A=B_1C_1=B_2C_2\)</span>，则存在<span class="math inline">\(r\)</span>阶可逆矩阵<span class="math inline">\(P\)</span>使得<span class="math inline">\(B_2=B_1P,C_2=P^{-1}C_1\)</span>.（利用1证明）</li>
+</ul></li>
+</ol>
+<h3 id="实对称矩阵">实对称矩阵</h3>
+<ol type="1">
+<li><span class="math inline">\(n\)</span>阶对称矩阵<span class="math inline">\(A\)</span>是零矩阵的充要条件是对任意的<span class="math inline">\(n\)</span>维列向量<span class="math inline">\(\alpha\)</span>，有<span class="math inline">\(\alpha&#39;A\alpha=0\)</span>.</li>
+<li>实对称矩阵属于不同特征值的特征向量是正交的。</li>
+<li>实对称矩阵的特征值都为实数。</li>
+<li>实对称矩阵一定正交相似对角矩阵。
+<ul>
+<li>已知<span class="math inline">\(B,C\)</span>为<span class="math inline">\(n\)</span>阶实对称阵，<span class="math inline">\(|B|=0\)</span>，则存在<span class="math inline">\(n\)</span>阶实对称阵<span class="math inline">\(A\)</span>使得<span class="math inline">\(AB+BA&#39;=C\)</span>.</li>
+</ul></li>
+<li>实对称矩阵的特征值的代数重数等于几何重数。
+<ul>
+<li>因为实对称矩阵一定可以对角化。</li>
+</ul></li>
+</ol>
+<h3 id="反对称矩阵">反对称矩阵</h3>
+<ol type="1">
+<li><span class="math inline">\(n\)</span>阶矩阵<span class="math inline">\(A\)</span>是反对称矩阵的充要条件是对任意的<span class="math inline">\(n\)</span>维列向量<span class="math inline">\(\alpha\)</span>，有<span class="math inline">\(\alpha&#39;A\alpha=0\)</span>.</li>
+<li><span class="math inline">\(n\)</span>阶矩阵<span class="math inline">\(A\)</span>是反对称矩阵，则<span class="math inline">\(I_n-A\)</span>不可逆.</li>
+<li><span class="math inline">\(n\)</span>阶矩阵<span class="math inline">\(A\)</span>是反对称矩阵，则其行列式的值总是非负实数.</li>
+</ol>
+<h3 id="伴随矩阵">伴随矩阵</h3>
+<ol type="1">
+<li><p>设<span class="math inline">\(A\)</span>是<span class="math inline">\(n\)</span>阶矩阵（<span class="math inline">\(n\geqslant2\)</span>），则：<span class="math inline">\(|A^*|=|A|^{n-1}\)</span>.</p></li>
+<li><p>设<span class="math inline">\(A\)</span>是<span class="math inline">\(n\)</span>阶矩阵（<span class="math inline">\(n\geqslant 3\)</span>），则：<span class="math inline">\((A^*)^*=|A|^{n-2}A\)</span>.</p></li>
+<li><p>设<span class="math inline">\(A,B\)</span>为<span class="math inline">\(n\)</span>阶矩阵，求证：<span class="math inline">\((AB)^*=B^*A^*\)</span>.</p></li>
+<li><p>设<span class="math inline">\(A\)</span>是<span class="math inline">\(n\)</span>阶矩阵（<span class="math inline">\(n\geqslant2\)</span>），则有 $$ (A^*)=</p>
+<span class="math display">\[\begin{cases}
+n &amp; \text{rand}(A)=n,\\
+1 &amp; \text{rand}(A)=n-1,\\
+0 &amp; \text{rand}(A)&lt;n-1.
+
+\end{cases}\]</span>
+<p>$$</p></li>
+<li></li>
+</ol>
+<h3 id="矩阵的逆">矩阵的逆</h3>
+<p><strong>证明矩阵可逆的方法：</strong></p>
+<blockquote>
+<ul>
+<li>对应的齐次线性方程组只有零解，从而系数矩阵的行列式为<span class="math inline">\(0\)</span>.</li>
+<li>行列式不等于0 。</li>
+<li>满秩。</li>
+<li>凑因子：即找到对应的逆</li>
+<li>特征值非零
+<ul>
+<li>设<span class="math inline">\(n\)</span>阶方阵<span class="math inline">\(A\)</span>满足<span class="math inline">\(A^2-A-3I_n=O\)</span>，则<span class="math inline">\(A-2I_n\)</span>可逆。</li>
+</ul></li>
+<li>互素多项式的应用</li>
+</ul>
+</blockquote>
+<ol type="1">
+<li><p>矩阵<span class="math inline">\(A\)</span>可逆<span class="math inline">\(\iff |A|\ne0 \iff A\)</span>满秩。</p></li>
+<li><p>设<span class="math inline">\(A\)</span>为<span class="math inline">\(m\times n\)</span>矩阵，<span class="math inline">\(B\)</span>为<span class="math inline">\(n\times m\)</span>矩阵，使得<span class="math inline">\(I_m+AB\)</span>可逆，则<span class="math inline">\(I_n+BA\)</span> 也可逆。</p></li>
+<li><p>可逆矩阵满足消去律：</p>
+<ul>
+<li>若<span class="math inline">\(A\)</span>可逆，且<span class="math inline">\(BA=0\)</span>，则<span class="math inline">\(B=0\)</span>.</li>
+</ul></li>
+<li><p>设<span class="math inline">\(A,B,A-B\)</span>都是<span class="math inline">\(n\)</span>阶可逆矩阵,证明 <span class="math display">\[
+B^{-1}-A^{-1}=(B+B(A-B)^{-1}B)^{-1}.
+\]</span></p></li>
+<li><p>设<span class="math inline">\(A\)</span>可逆，则有<span class="math inline">\(A^{-1}+(A^{-1})&#39;=(A^{-1})&#39;(A+A&#39;)A^{-1}\)</span>.</p></li>
+</ol>
+<h3 id="幂等矩阵">幂等矩阵</h3>
+<ol type="1">
+<li>若幂等矩阵<span class="math inline">\(A\)</span>的满秩分解为<span class="math inline">\(A=ST\)</span>，则<span class="math inline">\(TS=I_r\)</span>，其中<span class="math inline">\(r\)</span>为幂等矩阵的秩、迹.</li>
+</ol>
+<h3 id="特征值与特征向量">特征值与特征向量</h3>
+<ol type="1">
+<li><p><strong>（特征值降阶公式）设<span class="math inline">\(A\)</span>是<span class="math inline">\(m\times n\)</span>矩阵，<span class="math inline">\(B\)</span>是<span class="math inline">\(n\times m\)</span>矩阵，且<span class="math inline">\(m\geqslant n\)</span>，则有</strong> <span class="math display">\[
+|\lambda I_m-AB|=\lambda^{m-n}|\lambda I_n-BA|.
+\]</span></p></li>
+<li><p>若矩阵<span class="math inline">\(A\)</span>适合多项式<span class="math inline">\(f(x)\)</span>，则矩阵<span class="math inline">\(A\)</span>的特征值也适合多项式<span class="math inline">\(f(x)\)</span>.</p></li>
+<li><p>若矩阵<span class="math inline">\(A\)</span>的全体特征值为<span class="math inline">\(\lambda_1,\lambda_2,\cdots,\lambda_n\)</span>，<span class="math inline">\(f(x)\)</span>为一多项式，则<span class="math inline">\(f(A)\)</span>的全体特征值为<span class="math inline">\(f(\lambda_1),f(\lambda_2),\cdots,f(\lambda_n)\)</span>.</p></li>
+</ol>
+<h3 id="正定矩阵">正定矩阵</h3>
+<ol type="1">
+<li><p><strong>正定矩阵判定：</strong></p>
+<ul>
+<li><p>（对称初等变换）合同变换不改变正定性，与单位阵合同</p>
+<blockquote>
+<p><span class="math inline">\(A\)</span>正定，证明<span class="math inline">\(\begin{pmatrix}A &amp; -I_n\\-I_n &amp; A^{-1} \end{pmatrix}\)</span>半正定.</p>
+</blockquote></li>
+<li><p>利用特征值来判断，特征值全大于<span class="math inline">\(0\)</span>.</p>
+<blockquote>
+<p>若<span class="math inline">\(A\)</span>为可逆实矩阵，求<span class="math display">\[\begin{pmatrix}O &amp; A\\A&#39; &amp; O   \end{pmatrix}\]</span>的正负惯性指数。（也可以用上面的对称初等变换）</p>
+</blockquote></li>
+<li></li>
+</ul></li>
+<li><p><strong><span class="math inline">\(A\)</span>是可逆实对称阵，则<span class="math inline">\(A&#39;A\)</span>为正定矩阵.</strong>s</p></li>
+</ol>
+<h2 id="二次型">二次型</h2>
+<ol type="1">
+<li><p>（正负惯性指数的降阶公式）设分块实对称矩阵<span class="math inline">\(M=\begin{pmatrix}A &amp; C\\ C&#39;&amp;B \end{pmatrix}\)</span>，其中<span class="math inline">\(A,B\)</span>可逆，则 <span class="math display">\[
+p(A)+p(B-C&#39;A^{-1}C)=p(B)+p(A-CB^{-1}C&#39;),\\
+q(A)+q(B-C&#39;A^{-1}C)=q(B)+q(A-CB^{-1}C&#39;).
+\]</span></p>
+<ul>
+<li><p>其中<span class="math inline">\(p(A),q(A)\)</span>分别表示<span class="math inline">\(A\)</span>的正负惯性指数.</p></li>
+<li><p>求下列矩阵的正负惯性指数: <span class="math display">\[
+\begin{pmatrix}
+a_1^2 &amp; a_1a_2+1 &amp; \cdots &amp; a_1a_n+1\\
+a_2a_1+1 &amp; a_2^2 &amp; \cdots &amp; a_2a_n+1\\
+\vdots &amp; \vdots &amp; &amp; \vdots\\
+a_na_1+1 &amp; a_na_2+1 &amp; \cdots &amp; a_na_n+1
+\end{pmatrix}
+\]</span></p></li>
+</ul></li>
+</ol>
+<h2 id="摄动法解题">摄动法解题</h2>
+<p>注：习题摘自高等代数习题课（复旦大学谢启鸿）</p>
+<ol type="1">
+<li><p>设<span class="math inline">\(A\)</span>是一个<span class="math inline">\(n\)</span>阶矩阵，求证：存在一个正数<span class="math inline">\(a\)</span>，使得对任意的<span class="math inline">\(0&lt;t&lt;a\)</span>，矩阵<span class="math inline">\(tI_n+A\)</span>都是非异阵.</p></li>
+<li><p>设<span class="math inline">\(A,B\)</span>为<span class="math inline">\(n\)</span>阶矩阵，求证：<span class="math inline">\((AB)^*=B^*A^*\)</span>.</p></li>
+<li><p>设<span class="math inline">\(A\)</span>是一个<span class="math inline">\(n\)</span>阶矩阵，求证：<span class="math inline">\(|A^*|=|A|^{n-1}\)</span>.</p></li>
+<li><p>设<span class="math inline">\(A\)</span>是一个<span class="math inline">\(n(n&gt;2)\)</span>阶矩阵，求证：<span class="math inline">\((A^*)^*=|A|^{n-2}A\)</span>.</p></li>
+<li><p>设<span class="math inline">\(A\)</span>是一个<span class="math inline">\(m\)</span>阶矩阵，<span class="math inline">\(B\)</span>为<span class="math inline">\(n\)</span>阶矩阵，求分块对角矩阵<span class="math inline">\(C\)</span>的伴随矩阵： <span class="math display">\[
+C=\begin{pmatrix}
+A &amp; O\\
+O &amp; B
+\end{pmatrix}
+\]</span></p></li>
+<li><p>设<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>，<span class="math inline">\(C\)</span>，<span class="math inline">\(D\)</span>都是数域<span class="math inline">\(K\)</span>上的<span class="math inline">\(n\)</span>阶矩阵，且<span class="math inline">\(AC=CA\)</span>，则 <span class="math display">\[
+\begin{vmatrix}
+A &amp; B\\
+C &amp; D
+\end{vmatrix}
+=\begin{vmatrix}
+AD-CB
+\end{vmatrix}
+\]</span></p></li>
+<li><p>设<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>都是数域<span class="math inline">\(K\)</span>上的<span class="math inline">\(n\)</span>阶矩阵，且<span class="math inline">\(AB=BA\)</span>，则 <span class="math display">\[
+\begin{vmatrix}
+A &amp; -B\\
+B &amp; A
+\end{vmatrix}
+=\begin{vmatrix}
+A^2+B^2
+\end{vmatrix}
+\]</span></p></li>
+<li><p>上（下）三角阵的伴随仍然是上（下）三角阵，且主对角元是对应元素的伴随.</p></li>
+<li><p>设<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>都是数域<span class="math inline">\(K\)</span>上的<span class="math inline">\(n\)</span>阶矩阵，且<span class="math inline">\(AB=BA\)</span>，则<span class="math inline">\(A^*B^*=B^*A^*\)</span>.</p></li>
+<li><p>设<span class="math inline">\(|A|=|a_{ij}|\)</span>是一个<span class="math inline">\(n\)</span>阶行列式，<span class="math inline">\(A_{ij}\)</span>是它的第<span class="math inline">\((i,j)\)</span>元素的代数余子式，求证： <span class="math display">\[
+\begin{vmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} &amp; x_1 \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} &amp; x_2 \\
+\vdots &amp; \vdots &amp;        &amp; \vdots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} &amp; x_n \\
+y_1    &amp; y_2    &amp; \cdots &amp; y_n    &amp; 1
+\end{vmatrix}
+=|A|-\sum_{i=1}^{n}\sum_{j=1}^n A_{ij}x_iy_j.
+\]</span></p></li>
+</ol>
+<h2 id="求代数余子式之和">求代数余子式之和</h2>
+<h3 id="求所有代数余子式">求所有代数余子式</h3>
+<ol type="1">
+<li><p>设<span class="math inline">\(|A|=|a_{ij}|\)</span>是一个<span class="math inline">\(n\)</span>阶行列式，<span class="math inline">\(A_{ij}\)</span>是它的第<span class="math inline">\((i,j)\)</span>元素的代数余子式，则有 <span class="math display">\[
+\begin{vmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} &amp; 1 \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} &amp; 1 \\
+\vdots &amp; \vdots &amp;         &amp; \vdots &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} &amp; 1 \\
+1    &amp; 1    &amp; \cdots &amp; 1    &amp; 0
+\end{vmatrix}
+=-\sum_{i=1}^{n}\sum_{j=1}^n A_{ij}x_iy_j.
+\]</span></p></li>
+<li><p>利用下面结论（分别将<span class="math inline">\(x\)</span>取值为1）：</p>
+<ul>
+<li><p><span class="math display">\[
+\begin{vmatrix}
+a_{11}+x &amp; a_{12}+x &amp; \cdots &amp; a_{1n}+x \\
+a_{21}+x &amp; a_{22}+x &amp; \cdots &amp; a_{2n}+x \\
+\vdots &amp; \vdots &amp;       &amp; \vdots \\
+a_{n1}+x &amp; a_{n2}+x &amp; \cdots &amp; a_{nn}+x \\
+\end{vmatrix}
+=\begin{vmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp;       &amp; \vdots \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} 
+\end{vmatrix}+x\sum_{i=1}^{n}\sum_{j=1}^n A_{ij}.
+\]</span></p></li>
+<li><p><span class="math display">\[
+\begin{vmatrix}
+a_{11}-a_{12} &amp; a_{12}-a_{13} &amp; \cdots &amp; a_{1,n-1}-a_{1n} &amp; 1 \\
+a_{21}-a_{22} &amp; a_{22}-a_{23} &amp; \cdots &amp; a_{2,n-1}-a_{2n} &amp; 1 \\
+\vdots &amp; \vdots &amp;       &amp; \vdots &amp; \vdots \\
+a_{n1}-a_{n2} &amp; a_{n2}-a_{n3} &amp; \cdots &amp; a_{n,n-1}-a_{nn} &amp; 1 
+\end{vmatrix}
+=\sum_{i=1}^{n}\sum_{j=1}^n A_{ij}x_iy_j.
+\]</span></p></li>
+</ul></li>
+</ol>
+<h3 id="求某一行代数余子式之和">求某一行代数余子式之和</h3>
+<ol type="1">
+<li><p>利用行列式按一行展开的性质：<span class="math inline">\(a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}=|A|\)</span>.</p>
+<ul>
+<li><p>计算<span class="math inline">\(A_{21}+A_{22}+A_{23}+A_{24}\)</span>，其中<span class="math inline">\(A_{ij}\)</span>是下面这个行列式<span class="math inline">\(a_{ij}\)</span>的代数余子式。 <span class="math display">\[
+D=
+\begin{vmatrix}
+2 &amp; -5 &amp; 3 &amp; 4 \\
+9 &amp; 8 &amp; 7 &amp; 6 \\
+1 &amp; 5 &amp; 7 &amp; 3 \\
+4 &amp; 7 &amp; 0 &amp; 3 
+\end{vmatrix}
+\]</span></p></li>
+<li><p>只需将<span class="math inline">\(D\)</span>的第二行元素换为<span class="math inline">\(1\)</span>，再计算行列式即可。</p></li>
+</ul></li>
+</ol>
+<h2 id="用到的其他知识">用到的其他知识</h2>
+<ol type="1">
+<li>设在区间<span class="math inline">\([a,b]\)</span>上给定<span class="math inline">\(n+1\)</span>个点 <span class="math display">\[
+a\leqslant x_0&lt;x_1&lt;\cdots&lt;x_n\leqslant b
+\]</span> 上的函数值<span class="math inline">\(y_i=f(x_i)(i=0,1,\cdots,n)\)</span>，则存在一个唯一的不超过<span class="math inline">\(n\)</span>次的多项式 <span class="math display">\[
+P(x)=a_0+a_1x+\cdots+a_nx^n
+\]</span> 使得 <span class="math display">\[
+P(x_i)=y_i,\quad i=0,1,\cdots,n.
+\]</span></li>
+</ol>
+<h2 id="一定要想到的点">一定要想到的点</h2>
+<ol type="1">
+<li><span class="math inline">\(A\alpha=0\)</span>，一定要想到左乘<span class="math inline">\(\alpha&#39;\)</span>，或者<span class="math inline">\(\bar{\alpha&#39;}\)</span>.</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/">高等代数</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/29/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/17/%E9%87%8D%E8%A6%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E3%80%81%E4%B8%8D%E7%AD%89%E5%BC%8F%E3%80%81%E7%AD%89%E5%BC%8F/">
+                        <span class="hidden-mobile">重要数学公式、不等式、等式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=498040739&auto=0&height=66"></iframe>
+	
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+  <div>
+  <span id="timeDate">载入天数...</span>
+  <span id="times">载入时分秒...</span>
+  <script>
+  var now = new Date();
+  function createtime(){
+      var grt= new Date("06/06/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
+      now.setTime(now.getTime()+250);
+      days = (now - grt ) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+      hnum = Math.floor(hours);
+      if(String(hnum).length ==1 ){
+          hnum = "0" + hnum;
+      }
+      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes);
+      if(String(mnum).length ==1 ){
+                mnum = "0" + mnum;
+      }
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds);
+      if(String(snum).length ==1 ){
+                snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "🚀 for&nbsp"+dnum+"&nbspdays";  //此次自定义显示内容
+      document.getElementById("times").innerHTML = hnum + "&nbsphr&nbsp" + mnum + "&nbspmin&nbsp" + snum + "&nbspsec";
+  }  //此次自定义显示内容
+  setInterval("createtime()",250);
+  </script>
+</div>
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/love.js"></script>
+<script src="/js/xiaoxingxing.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

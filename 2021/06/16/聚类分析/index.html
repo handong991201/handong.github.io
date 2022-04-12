@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/handong991201/picture/img/美丽的天空.jpg">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/handong991201/picture/img/美丽的天空.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="handong">
+  <meta name="keywords" content="">
+  
+  <title>聚类分析 - 寒冬</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/atom-one-dark-reasonable.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/gundongtiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"handong991201.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>handong</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/handong991201/picture/img/1602750730545.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="聚类分析">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-16 20:58" pubdate>
+        2021年6月16日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">聚类分析</h1>
+            
+            <div class="markdown-body">
+              <h1 id="聚类分析">聚类分析</h1>
+<h2 id="层次聚类">层次聚类</h2>
+<ul>
+<li><p>基本概念：形成类相似度层次图谱，便于直观的确定类之间的划分。该方法可以得到较理想的分类，但是难以处理大量样本。通过层次树决定聚类个数和聚类方式。</p></li>
+<li><p>基本步骤：</p>
+<ol type="1">
+<li><p>计算每两个观测之间的距离</p></li>
+<li><p>.将最近的两个观测聚为一类，将其看作一个整体计算与其它观测（类）之间的距离</p></li>
+<li><p>一直重复上述过程，直至所有的观测被聚为一类</p></li>
+<li><p><strong>距离的测量涉及两个层面的问题：一个是观测之间的距离，另一个是类与观测或观测与观测之间的距离</strong></p>
+<p>观测之间的距离：欧氏距离</p>
+<p>类之间的距离：平均法、重心法、Ward最小方差法。</p></li>
+</ol></li>
+<li><p>案例：对中国十个城市经济数据进行聚类分析:</p></li>
+</ul>
+<blockquote>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R"><span class="hljs-comment">##读取数据集</span><br>Data&lt;-read.csv(<span class="hljs-string">&quot;cities_10.csv&quot;</span>)<br><span class="hljs-comment">##2到10列为各个城市的经济数据</span><br>CluData&lt;-Data[,<span class="hljs-number">2</span>:<span class="hljs-number">10</span>]<br><span class="hljs-comment">##生成距离矩阵，方法使用欧氏距离</span><br>DisMatrix&lt;-dist(CluData,method = <span class="hljs-string">&quot;euclidean&quot;</span>)<br><span class="hljs-comment">##进行层次聚类，method参数选择瓦德法</span><br>CluR&lt;-hclust(d=DisMatrix,method=<span class="hljs-string">&quot;ward.D&quot;</span>)<br><span class="hljs-comment">##使用plot函数绘制聚类结果的树形图</span><br>plot(CluR,labels=Data[,<span class="hljs-number">1</span>])<br></code></pre></div></td></tr></table></figure>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/handong991201/picture/img/image-20210616200209582.png" srcset="/img/loading.gif" lazyload alt="聚类结果树形图" /><figcaption aria-hidden="true">聚类结果树形图</figcaption>
+</figure>
+</blockquote>
+<ul>
+<li>结果分析：样本之间的水平线越短，说明两者越相似。比如福建和辽宁的水平线最短，说明两者的消费形式最接近，其次是江苏和山东。</li>
+<li>从树形图中可以获得分类和分为几类的启示。如果想分为四类，可以像上图所示的那样，这样把上海、天津分别归为一类，把广西、河北、福建和辽宁归为一类，把山东、江苏、广东和浙江归为一类。</li>
+</ul>
+<h2 id="k-means聚类">k-means聚类</h2>
+<ul>
+<li><p>基本概念：可以处理样本量大的数据，但是不能提供类相似度信息，需要事先决定聚类个数。</p></li>
+<li><p>基本步骤：</p>
+<ol type="1">
+<li>设定k值，确定聚类数（软件随机分配聚类中心所需的种子）；</li>
+<li>计算每个记录到类中心的距离（欧式），并分成k类。</li>
+<li>然后把k类中心（均值），作为新的中心，重新计算距离；</li>
+<li>重复第2步直到聚类的中心不再移动。</li>
+</ol></li>
+<li><p>应用场景：</p>
+<ol type="1">
+<li>将个案数据做划分</li>
+<li>异常值检测</li>
+</ol></li>
+<li><p>案例：对上述案例采用k-means聚类方法：</p>
+<blockquote>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">k4&lt;-kmeans(DisMatrix,centers = <span class="hljs-number">4</span>,trace = <span class="hljs-literal">TRUE</span>) <span class="hljs-comment">## DisMatrix为距离矩阵，centers为分成几类 </span><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>结果：</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">K-means clustering with <span class="hljs-number">4</span> clusters of sizes <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span><br><br>Cluster means:<br>          <span class="hljs-number">1</span>         <span class="hljs-number">2</span>         <span class="hljs-number">3</span>        <span class="hljs-number">4</span>         <span class="hljs-number">5</span>        <span class="hljs-number">6</span>         <span class="hljs-number">7</span>         <span class="hljs-number">8</span>         <span class="hljs-number">9</span>        <span class="hljs-number">10</span><br><span class="hljs-number">1</span>  <span class="hljs-number">9910.261</span> <span class="hljs-number">14323.813</span> <span class="hljs-number">13745.781</span>     <span class="hljs-number">0.00</span> <span class="hljs-number">12575.144</span> <span class="hljs-number">19087.15</span>  <span class="hljs-number">8720.576</span>  <span class="hljs-number">9042.916</span> <span class="hljs-number">14058.833</span> <span class="hljs-number">17018.930</span><br><span class="hljs-number">2</span> <span class="hljs-number">27655.892</span> <span class="hljs-number">29511.575</span> <span class="hljs-number">31618.631</span> <span class="hljs-number">19087.15</span> <span class="hljs-number">26837.634</span>     <span class="hljs-number">0.00</span> <span class="hljs-number">24186.184</span> <span class="hljs-number">27193.594</span> <span class="hljs-number">26771.674</span> <span class="hljs-number">35827.956</span><br><span class="hljs-number">3</span>  <span class="hljs-number">6362.906</span>  <span class="hljs-number">3316.446</span>  <span class="hljs-number">7979.897</span> <span class="hljs-number">12419.59</span>  <span class="hljs-number">2437.858</span> <span class="hljs-number">26826.77</span>  <span class="hljs-number">3914.664</span>  <span class="hljs-number">7259.760</span>  <span class="hljs-number">3353.722</span> <span class="hljs-number">13483.506</span><br><span class="hljs-number">4</span>  <span class="hljs-number">3517.258</span>  <span class="hljs-number">7767.016</span>  <span class="hljs-number">3611.960</span> <span class="hljs-number">12429.47</span>  <span class="hljs-number">8679.445</span> <span class="hljs-number">30574.02</span>  <span class="hljs-number">7711.334</span>  <span class="hljs-number">3709.521</span> <span class="hljs-number">10928.274</span>  <span class="hljs-number">5829.637</span><br><br>Clustering vector:<br> <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>  <span class="hljs-number">5</span>  <span class="hljs-number">6</span>  <span class="hljs-number">7</span>  <span class="hljs-number">8</span>  <span class="hljs-number">9</span> <span class="hljs-number">10</span> <br> <span class="hljs-number">4</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>  <span class="hljs-number">1</span>  <span class="hljs-number">3</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span> <span class="hljs-comment"># 分类结果</span><br><br>Within cluster <span class="hljs-built_in">sum</span> of squares by cluster:<br>[<span class="hljs-number">1</span>]         <span class="hljs-number">0</span>         <span class="hljs-number">0</span> <span class="hljs-number">138020724</span> <span class="hljs-number">382259532</span><br> (between_SS / total_SS =  <span class="hljs-number">90.9</span> %)<br><br>Available components:<br><br>[1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot; &quot;betweenss&quot;   <br>[7] &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot; <br></code></pre></div></td></tr></table></figure>
+</blockquote></li>
+</ul>
+<h2 id="数据集">数据集</h2>
+<table>
+<thead>
+<tr class="header">
+<th>AREA</th>
+<th>X1</th>
+<th>X2</th>
+<th>X3</th>
+<th>X4</th>
+<th>X5</th>
+<th>X6</th>
+<th>X7</th>
+<th>X8</th>
+<th>X9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>辽宁</td>
+<td>5458.2</td>
+<td>13000</td>
+<td>1376.2</td>
+<td>2258.4</td>
+<td>1315.9</td>
+<td>529</td>
+<td>2258.4</td>
+<td>123.7</td>
+<td>399.7</td>
+</tr>
+<tr class="even">
+<td>山东</td>
+<td>10550</td>
+<td>11643</td>
+<td>3502.5</td>
+<td>3851</td>
+<td>2288.7</td>
+<td>1070.7</td>
+<td>3181.9</td>
+<td>211.1</td>
+<td>610.2</td>
+</tr>
+<tr class="odd">
+<td>河北</td>
+<td>6076.6</td>
+<td>9047</td>
+<td>1406.7</td>
+<td>2092.6</td>
+<td>1161.6</td>
+<td>597.1</td>
+<td>1968.3</td>
+<td>45.9</td>
+<td>302.3</td>
+</tr>
+<tr class="even">
+<td>天津</td>
+<td>2022.6</td>
+<td>22068</td>
+<td>822.8</td>
+<td>960</td>
+<td>703.7</td>
+<td>361.9</td>
+<td>941.4</td>
+<td>115.7</td>
+<td>171.8</td>
+</tr>
+<tr class="odd">
+<td>江苏</td>
+<td>10636.3</td>
+<td>14397</td>
+<td>3536.3</td>
+<td>3967.2</td>
+<td>2320</td>
+<td>1141.3</td>
+<td>3215.8</td>
+<td>384.7</td>
+<td>643.7</td>
+</tr>
+<tr class="even">
+<td>上海</td>
+<td>5408.8</td>
+<td>40627</td>
+<td>2196.2</td>
+<td>2755.8</td>
+<td>1970.2</td>
+<td>779.3</td>
+<td>2035.2</td>
+<td>320.5</td>
+<td>709</td>
+</tr>
+<tr class="odd">
+<td>浙江</td>
+<td>7670</td>
+<td>16570</td>
+<td>2356.5</td>
+<td>3065</td>
+<td>2296.6</td>
+<td>1180.6</td>
+<td>2877.5</td>
+<td>294.2</td>
+<td>566.9</td>
+</tr>
+<tr class="even">
+<td>福建</td>
+<td>4682</td>
+<td>13510</td>
+<td>1047.1</td>
+<td>1859</td>
+<td>964.5</td>
+<td>397.9</td>
+<td>1663.3</td>
+<td>173.7</td>
+<td>272.9</td>
+</tr>
+<tr class="odd">
+<td>广东</td>
+<td>11769.7</td>
+<td>15030</td>
+<td>4224.6</td>
+<td>4793.6</td>
+<td>3022.9</td>
+<td>1275.5</td>
+<td>5013.6</td>
+<td>1843.7</td>
+<td>1201.6</td>
+</tr>
+<tr class="even">
+<td>广西</td>
+<td>2455.4</td>
+<td>5062</td>
+<td>367</td>
+<td>995.7</td>
+<td>542.2</td>
+<td>352.7</td>
+<td>1025.5</td>
+<td>15.1</td>
+<td>186.7</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/R%E8%AF%AD%E8%A8%80/">R语言</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/19/SQL%E7%BB%83%E4%B9%A0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SQL练习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/13/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">
+                        <span class="hidden-mobile">科学上网</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=498040739&auto=0&height=66"></iframe>
+	
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+  <div>
+  <span id="timeDate">载入天数...</span>
+  <span id="times">载入时分秒...</span>
+  <script>
+  var now = new Date();
+  function createtime(){
+      var grt= new Date("06/06/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
+      now.setTime(now.getTime()+250);
+      days = (now - grt ) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+      hnum = Math.floor(hours);
+      if(String(hnum).length ==1 ){
+          hnum = "0" + hnum;
+      }
+      minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+      mnum = Math.floor(minutes);
+      if(String(mnum).length ==1 ){
+                mnum = "0" + mnum;
+      }
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+      snum = Math.round(seconds);
+      if(String(snum).length ==1 ){
+                snum = "0" + snum;
+      }
+      document.getElementById("timeDate").innerHTML = "🚀 for&nbsp"+dnum+"&nbspdays";  //此次自定义显示内容
+      document.getElementById("times").innerHTML = hnum + "&nbsphr&nbsp" + mnum + "&nbspmin&nbsp" + snum + "&nbspsec";
+  }  //此次自定义显示内容
+  setInterval("createtime()",250);
+  </script>
+</div>
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/love.js"></script>
+<script src="/js/xiaoxingxing.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
