@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>图片转为 tikz 代码</title>
+    <link href="/2023/06/06/%E5%9B%BE%E7%89%87%E8%BD%AC%E4%B8%BA-tikz-%E4%BB%A3%E7%A0%81/"/>
+    <url>/2023/06/06/%E5%9B%BE%E7%89%87%E8%BD%AC%E4%B8%BA-tikz-%E4%BB%A3%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<p>本文档记录了将常见的图片文件（jpg，png，bmp格式）转化为tikz代码。总体分为两步，第一步先通过一个网站将图片转为svg格式，然后在软件Inkscape中利用svg2tikz拓展导出代码。</p><h2 id="准备工作">准备工作</h2><p>首先从<ahref="https://inkscape.org/">inkscape网站</a>下载软件，安装完成之后，将拓展包（<ahref="https://pan.baidu.com/s/1pPlgeOWl2ocZaIR_3PprbQ?pwd=u8y3">下载地址</a>）解压缩，将其中的四个文件（如下图）</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/handong991201/picture@main/img/image-20230606141555474.png"alt="image-20230606141555474" /><figcaption aria-hidden="true">image-20230606141555474</figcaption></figure><p>复制到 inkscape 安装目录下的 ，</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/handong991201/picture@main/img/image-20230606141501120.png"alt="image-20230606141501120" /><figcaption aria-hidden="true">image-20230606141501120</figcaption></figure><p>接着打开inkscape软件检查是否成功安装svg2tikz拓展包，若点击工具栏的拓展<span class="math inline">\(\rightarrow\)</span> 导出，若有 Export toTikZ path 则安装成功。</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/handong991201/picture@main/img/image-20230606141835358.png"alt="image-20230606141835358" /><figcaption aria-hidden="true">image-20230606141835358</figcaption></figure><h2 id="图片转换">图片转换</h2><ol type="1"><li><p>图片转为 svg 格式。将要转换的图片上传到网站 <ahref="https://www.autotracer.org/zh.html">在线图像矢量转换工具</a>，修改色彩数和平滑度，选择更平滑最终的代码会更少，当然最后生成的图片失真会更明显。点击开始，即进行转换。</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/handong991201/picture@main/img/image-20230606143429275.png"alt="image-20230606143429275" /><figcaption aria-hidden="true">image-20230606143429275</figcaption></figure><p>等待完成之后，即可下载转换后的 svg 图片。</p><blockquote><p>正常的 <a href="https://www.runoob.com/svg/svg-tutorial.html">svg</a>格式图片，里面的数据是一些点，线，路径组成，若用记事本打开下载的 svg图片，里面应该是一些数字，</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/handong991201/picture@main/img/image-20230606145656185.png"alt="image-20230606145656185" /><figcaption aria-hidden="true">image-20230606145656185</figcaption></figure></blockquote><p>若是一连串的字母，最终可能会导致转换失败。</p></li><li><p>用 inkscape 软件打开刚才所转换的 svg 图片，点击工具栏的的拓展<span class="math inline">\(\rightarrow\)</span> 导出 <spanclass="math inline">\(\rightarrow\)</span> Export to TikZpath，在弹出的对话框中选择保存路径以及文件名（可现在外部创建一个空白 tex文件），点击应用即可。</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/handong991201/picture@main/img/image-20230606150045444.png"alt="image-20230606150045444" /><figcaption aria-hidden="true">image-20230606150045444</figcaption></figure></li><li><p>导出的 tex 文件代码即可复制或其他方式使用。</p></li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Lagrange恒等式</title>
     <link href="/2022/04/12/Lagrange%E6%81%92%E7%AD%89%E5%BC%8F/"/>
     <url>/2022/04/12/Lagrange%E6%81%92%E7%AD%89%E5%BC%8F/</url>
